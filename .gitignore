@@ -1,0 +1,14 @@
+.env
+PRESENTATION_DIAGRAMS.md
+PROJECT_BLUEPRINT.md
+//Check this
+check_mp3_header.py
+test_edge_tts.py
+NewSTTS_Colab.ipynb
+db.sqlite3
+*.pyc
+__pycache__
+*.log
+error.txt
+load_error.txt
+.DS_Store4e6778784c251

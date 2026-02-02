@@ -1,0 +1,18 @@
+Django
+yt-dlp
+faster-whisper
+deep-translator
+Amazon polly
+boto3
+numpy
+channels
+daphne
+imageio[ffmpeg]
+torch
+pydub
+protobuf<4.26
+git+https://github.com/huggingface/parler-tts.git
+transformers
+scipy
+soundfile
+Amazon Bedrock (Claude 3.5 Sonnet)

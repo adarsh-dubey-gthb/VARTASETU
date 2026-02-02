@@ -1,0 +1,1115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Varta Setu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Define CSS Variables for Theme Support */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --section-bg: #BFBFBF;
+            --accent-color: #8b0000;
+        }
+
+        /* Base Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Abhaya Libre", serif;
+            /* Transition for smooth theme switching */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .text {
+            padding: 10px;
+            height: auto;
+            overflow: hidden;
+            font-size: 20px;
+        }
+
+        /* Navbar-1 */
+        #nav-1 {
+            height: 60px;
+            background-color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 45px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.7);
+            padding: 0 10px;
+        }
+
+        #logo {
+            font-weight: 950;
+            cursor: pointer;
+            margin-left: 50px;
+            display: flex;
+        }
+
+        #logo p {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            animation: typing 1s steps(10, end) forwards, 0.15s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 10ch;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #bb1919;
+            }
+        }
+
+        #logo .line {
+            height: 20px;
+            width: 20px;
+            background-color: var(--accent-color);
+            opacity: 0;
+            border-radius: 50%;
+            animation: fadeIn 1s ease-in forwards;
+            animation-delay: 2s;
+            margin-left: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .searchbar_menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            gap: 40px;
+            margin-right: 50px;
+            background-color: transparent;
+            /* Ensure transparency */
+        }
+
+        .searchbar_menu button {
+            height: 35px;
+            width: 90px;
+            background-color: var(--text-color, black);
+            color: var(--bg-color, white);
+            font-size: 20px;
+            border: var(--text-color, #000000) solid 2px;
+            border-radius: 5px;
+            margin: auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Subnarbar */
+        #subnav {
+            height: 50px;
+            background-color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: large;
+            overflow-x: auto;
+            position: relative;
+            z-index: 90;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            font-size: 23px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            margin-left: 50px;
+        }
+
+        .line {
+            border: none;
+            height: 1px;
+            background-color: #000000;
+            margin: 0;
+        }
+
+        /* MAIN */
+        /* Hero Section */
+        section {
+            height: fit-content;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category {
+            font-weight: 700;
+            font-size: 32px;
+            margin: 20px;
+            text-decoration-line: underline;
+        }
+
+        .img_headline {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-around;
+            gap: 40px;
+            margin: 40px;
+        }
+
+        #img-1 {
+            height: 300px;
+            width: 50%;
+            object-fit: cover;
+        }
+
+        .live {
+            display: flex;
+            align-items: center;
+        }
+
+        .red-triangle {
+            width: 20px;
+            height: 20px;
+            border: 5px solid var(--accent-color);
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .headline {
+            font-size: 40px;
+            font-weight: 800;
+        }
+
+        /* Section - 2/ More top Stories*/
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .innerbox {
+            height: auto;
+            width: 200px;
+            background-color: var(--card-bg);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image {
+            width: 100%;
+            height: 150px;
+            background-color: #eee;
+        }
+
+        .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text p {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* section -3/ Media */
+        .section-3_content {
+            display: flex;
+            gap: 30px
+        }
+
+        .section-3_headlines {
+            display: flex;
+            font-size: 25px;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            cursor: pointer;
+        }
+
+        /* Section-4/ Sports */
+        .section-4 {
+            background-color: var(--section-bg);
+        }
+
+        .Sports_news {
+            display: flex;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--section-bg);
+            z-index: 10;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.33);
+            transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s;
+        }
+
+        .Sports_news .headline {
+            font-weight: 500;
+            font-size: 25px;
+            text-decoration-line: underline;
+            cursor: pointer;
+        }
+
+        .Sports_news>div:first-child {
+            flex: 1;
+            background-color: transparent;
+        }
+
+        .Sports_news .text,
+        .Sports_news .headline {
+            background-color: transparent;
+        }
+
+        .Sports_news img {
+            height: 150px;
+            width: 200px;
+            object-fit: cover;
+        }
+
+        .Sports_news:hover {
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            background-color: var(--card-bg);
+        }
+
+        /* Section-5/ Environment */
+        .Environment_news .headline {
+            font-weight: 500;
+            font-size: 25px;
+            text-decoration-line: underline;
+        }
+
+        .section-5_content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .section-5_content img {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        /* Section-6/ The Latest Read */
+        .scroll {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            cursor: pointer;
+            animation: scroll-left 20s linear infinite;
+        }
+
+        .box:hover,
+        .scroll:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* footer */
+        footer {
+            height: 300px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .footer-update {
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* Specific Element Styling & Overrides */
+        #nav-1,
+        #subnav {
+            background-color: var(--bg-color);
+        }
+
+        .innerbox {
+            background-color: var(--card-bg);
+        }
+
+        .section-4,
+        .category[style*="background-color: #BFBFBF"] {
+            background-color: var(--section-bg) !important;
+        }
+
+        .Sports_news {
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--section-bg);
+        }
+
+        .Sports_news:hover {
+            background-color: var(--card-bg);
+        }
+
+        #mySidebar {
+            background-color: var(--bg-color);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .sidebar-link {
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        button {
+            border-color: var(--border-color);
+        }
+
+        /* SideBar */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        #mySidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100%;
+            background-color: var(--bg-color, white);
+            z-index: 999;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+            border-right: 1px solid var(--border-color, #eee);
+            transition: left 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .sidebar-header {
+            font-size: 35px;
+            font-weight: 950;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+        }
+
+        .sidebar-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 22px;
+            font-weight: 600;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: color 0.2s, padding-left 0.2s;
+        }
+
+        .sidebar-link:hover {
+            color: var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 40px;
+            cursor: pointer;
+            color: var(--text-color);
+            border: none;
+            background: none;
+        }
+
+        #mySidebar.active {
+            left: 0;
+        }
+
+        #overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Audio Player Styles */
+        #audio-player-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            color: white;
+            padding: 15px;
+            display: none;
+            /* Hidden until played */
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        audio {
+            width: 80%;
+            max-width: 800px;
+        }
+
+        #now-playing-text {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #f0f0f0;
+        }
+
+        /* Tablets (768px and down) */
+        @media screen and (max-width: 900px) {
+            .img_headline {
+                flex-direction: column;
+            }
+
+            #img-1 {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .section-3_content {
+                flex-direction: column;
+            }
+
+            .section-3_headline-1,
+            .section-3_headlines {
+                width: 100% !important;
+                /* Force width override */
+            }
+
+            .section-5_content {
+                flex-direction: column-reverse;
+            }
+        }
+
+        /* Mobile Phones (500px and down) */
+        @media screen and (max-width: 500px) {
+            .headline {
+                font-size: 24px;
+            }
+
+            .category {
+                font-size: 28px;
+            }
+
+            .text {
+                font-size: 16px;
+            }
+
+            #logo {
+                margin-left: 10px;
+            }
+
+            #logo p {
+                font-size: 24px;
+            }
+
+            .searchbar_menu {
+                gap: 10px;
+                margin-right: 10px;
+            }
+
+            #subnav {
+                overflow-x: scroll;
+                white-space: nowrap;
+                justify-content: flex-start;
+                gap: 20px;
+            }
+
+            .Sports_news {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+            }
+
+            .Sports_news img {
+                width: 100%;
+                height: 200px;
+                margin-bottom: 10px;
+            }
+
+            .box {
+                flex-direction: column;
+            }
+
+            .innerbox {
+                width: 100%;
+            }
+
+            .section-5_content img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- Audio Player Footer -->
+    <div id="audio-player-container" style="display: none;">
+        <div id="now-playing-text">Select a news channel to start listening...</div>
+        <div style="display: flex; align-items: center; gap: 10px; width: 80%; max-width: 800px; margin-top: 5px;">
+            <!-- Language Selector (Synced with Global) -->
+            <select id="lang"
+                style="height: 40px; border-radius: 5px; padding: 5px; font-weight: bold; cursor: pointer;">
+                <option value="en" {% if current_lang=='en' %}selected{% endif %}>English (No-Trans)</option>
+                <option value="hi" {% if current_lang=='hi' %}selected{% endif %}>Hindi (हिंदी)</option>
+                <option value="ta" {% if current_lang=='ta' %}selected{% endif %}>Tamil (தமிழ்)</option>
+                <option value="te" {% if current_lang=='te' %}selected{% endif %}>Telugu (తెలుగు)</option>
+                <option value="bn" {% if current_lang=='bn' %}selected{% endif %}>Bengali (বাংলা)</option>
+                <option value="mr" {% if current_lang=='mr' %}selected{% endif %}>Marathi (मराठी)</option>
+                <option value="ml" {% if current_lang=='ml' %}selected{% endif %}>Malayalam (മലയാളം)</option>
+                <option value="kn" {% if current_lang=='kn' %}selected{% endif %}>Kannada (ಕನ್ನಡ)</option>
+                <option value="gu" {% if current_lang=='gu' %}selected{% endif %}>Gujarati (ગુજરાતી)</option>
+                <option value="pa" {% if current_lang=='pa' %}selected{% endif %}>Punjabi (ਪੰਜਾਬੀ)</option>
+                <option value="or" {% if current_lang=='or' %}selected{% endif %}>Odia (ଓଡ଼ିଆ)</option>
+                <option value="as" {% if current_lang=='as' %}selected{% endif %}>Assamese (অসমীয়া)</option>
+                <option value="ur" {% if current_lang=='ur' %}selected{% endif %}>Urdu (اردو)</option>
+            </select>
+            <audio id="news-player" controls autoplay style="flex-grow: 1;">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        function extractVideoID(url) {
+            // Regex to handle standard watch, short links, embed, AND /live/ URLs
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?)|(live\/))\??v?=?([^#&?]*).*/;
+            var match = url.match(regExp);
+
+            if (url.includes('/live/')) {
+                return url.split('/live/')[1].split('?')[0];
+            }
+            return (match && match[8] && match[8].length == 11) ? match[8] : (match && match[7] && match[7].length == 11) ? match[7] : false;
+        }
+
+        function playStream(youtubeUrl, headline, channelName, originalTitle) {
+            var player = document.getElementById('news-player');
+            var container = document.getElementById('audio-player-container');
+            var nowPlaying = document.getElementById('now-playing-text');
+            var lang = document.getElementById('lang').value;
+
+            // 1. Audio Setup
+            var streamUrl = '/stream/?url=' + encodeURIComponent(youtubeUrl) + '&lang=' + lang;
+            player.src = streamUrl;
+            container.style.display = 'flex';
+            nowPlaying.innerText = "Connecting to Live Stream (buffering)...";
+
+            player.play().then(() => {
+                nowPlaying.innerText = "🔴 " + (headline || "Live Audio Stream");
+            }).catch(e => {
+                console.error("Playback failed:", e);
+                nowPlaying.innerText = "Click play to start (Autoplay blocked)";
+            });
+
+            // 2. Video Setup (Hero Section Update)
+            var videoId = extractVideoID(youtubeUrl);
+            var heroImage = document.getElementById('img-1');
+
+            // If already replaced by iframe, get it
+            var existingIframe = document.getElementById('hero-video-frame');
+
+            if (videoId) {
+                // Add origin to fix Error 153/150 (Domain restriction issues)
+                var origin = encodeURIComponent(window.location.origin);
+                var embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&mute=1&playsinline=1&enablejsapi=1&origin=" + origin;
+
+                if (existingIframe) {
+                    existingIframe.src = embedUrl;
+                } else if (heroImage) {
+                    // Replace image with Iframe
+                    var iframeFn = document.createElement('iframe');
+                    iframeFn.id = 'hero-video-frame';
+                    iframeFn.src = embedUrl;
+                    iframeFn.style.width = "100%";
+                    iframeFn.style.height = "315px";
+                    iframeFn.frameBorder = "0";
+                    iframeFn.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                    iframeFn.allowFullscreen = true;
+
+                    // Style parent to accomodate
+                    heroImage.parentNode.style.minWidth = "50%";
+                    heroImage.parentNode.replaceChild(iframeFn, heroImage);
+                }
+            }
+
+            // 3. Update Text Info
+            if (headline) {
+                var heroHeadline = document.querySelector('.herosection .headline');
+                if (heroHeadline) heroHeadline.innerText = headline;
+                var heroName = document.querySelector('.herosection .img_headline > div > div:nth-child(3)');
+                if (heroName) heroName.innerText = channelName;
+            }
+        }
+
+        // Update language dynamically if changed while playing
+        document.getElementById('lang').addEventListener('change', function () {
+            var player = document.getElementById('news-player');
+            var nowPlaying = document.getElementById('now-playing-text');
+
+            if (!player.paused && player.currentSrc) {
+                // Get current URL params
+                var currentSrc = player.src;
+                var urlParams = new URLSearchParams(currentSrc.split('?')[1]);
+                var videoUrl = urlParams.get('url');
+
+                if (videoUrl) {
+                    nowPlaying.innerText = "Switching Language... (buffering)";
+                    var newSrc = '/stream/?url=' + encodeURIComponent(videoUrl) + '&lang=' + this.value;
+                    player.src = newSrc;
+                    player.play().then(() => {
+                        nowPlaying.innerText = "🔴 Live Audio Stream (" + this.options[this.selectedIndex].text + ")";
+                    }).catch(e => console.error(e));
+                }
+            }
+        });
+
+        // Global Language Change Handler
+        function changeGlobalLang(lang) {
+            var urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('lang', lang);
+            window.location.search = urlParams.toString();
+        }
+
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            let theme = 'light';
+            if (document.body.classList.contains('dark-mode')) {
+                theme = 'dark';
+            }
+            localStorage.setItem('theme', theme);
+            updateThemeIcon(theme);
+        }
+
+        function updateThemeIcon(theme) {
+            const themeIcon = document.getElementById('theme-icon');
+            if (theme === 'dark') {
+                themeIcon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`; // Moon icon
+            } else {
+                themeIcon.innerHTML = `<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>`; // Sun icon
+            }
+        }
+
+        // Apply saved theme on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+            updateThemeIcon(savedTheme);
+        });
+    </script>
+
+    <header>
+        <!-- navbar -->
+        <div id="nav-1">
+            <div id="logo" onclick="window.location.href='/'">
+                <img src="{% static 'core/logo.jpg' %}" alt="Varta Setu Logo">
+                <div>
+                    <p>Varta Setu</p>
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="searchbar_menu">
+                <div>
+                    <a href="register.html" style="color: inherit; text-decoration: none;"><button>Register</button></a>
+                </div>
+                <!-- Language Menu (Corrected: removed generic .menu class causing sidebar conflict) -->
+                <div>
+                    <select onchange="changeGlobalLang(this.value)"
+                        style="height: 35px; border-radius: 5px; font-weight: bold; cursor: pointer; border: 2px solid black; margin-right: 15px;">
+                        <option value="en" {% if current_lang=='en' %}selected{% endif %}>English</option>
+                        <option value="hi" {% if current_lang=='hi' %}selected{% endif %}>Hindi</option>
+                        <option value="ta" {% if current_lang=='ta' %}selected{% endif %}>Tamil</option>
+                        <option value="te" {% if current_lang=='te' %}selected{% endif %}>Telugu</option>
+                        <option value="bn" {% if current_lang=='bn' %}selected{% endif %}>Bengali</option>
+                        <option value="mr" {% if current_lang=='mr' %}selected{% endif %}>Marathi</option>
+                        <option value="ml" {% if current_lang=='ml' %}selected{% endif %}>Malayalam</option>
+                        <option value="kn" {% if current_lang=='kn' %}selected{% endif %}>Kannada</option>
+                        <option value="gu" {% if current_lang=='gu' %}selected{% endif %}>Gujarati</option>
+                        <option value="pa" {% if current_lang=='pa' %}selected{% endif %}>Punjabi</option>
+                        <option value="or" {% if current_lang=='or' %}selected{% endif %}>Odia</option>
+                        <option value="as" {% if current_lang=='as' %}selected{% endif %}>Assamese</option>
+                        <option value="ur" {% if current_lang=='ur' %}selected{% endif %}>Urdu</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="theme-toggle" onclick="toggleTheme()" style="cursor: pointer;">
+                        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <!-- Hamburger Menu (Added specific ID) -->
+                <div class="menu hamburger-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                        style="cursor: pointer;">
+                        <g fill="none">
+                            <path
+                                d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+                            <path fill="currentColor"
+                                d="M20 17.5a1.5 1.5 0 0 1 .144 2.993L20 20.5H4a1.5 1.5 0 0 1-.144-2.993L4 17.5zm0-7a1.5 1.5 0 0 1 0 3H4a1.5 1.5 0 0 1 0-3zm0-7a1.5 1.5 0 0 1 0 3H4a1.5 1.5 0 1 1 0-3z" />
+                        </g>
+                    </svg>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- subnavbar -->
+        <div id="subnav">
+            <div class="option">
+                <div class="option-1" onclick="window.location.href='/?category=Business&lang={{ current_lang }}'">
+                    Business</div>
+                <div class="option-2" onclick="window.location.href='/?category=Sports&lang={{ current_lang }}'">Sports
+                </div>
+                <div class="option-3" onclick="window.location.href='/?category=Education&lang={{ current_lang }}'">
+                    Education</div>
+                <div class="option-4" onclick="window.location.href='/?category=Tech&lang={{ current_lang }}'">Tech
+                </div>
+                <div class="option-5" onclick="window.location.href='/?category=Space&lang={{ current_lang }}'">Space
+                </div>
+                <div class="option-5" onclick="window.location.href='/?category=General&lang={{ current_lang }}'">
+                    Category</div>
+            </div>
+        </div>
+        <hr class="line">
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="herosection">
+            {% if channels %}
+            {% with hero=channels.0 %}
+            <div class="img_headline">
+                <img src="{{ hero.thumbnail }}" alt="{{ hero.headline }}" id="img-1">
+                <div>
+                    <div class="live">
+                        <div class="red-triangle"></div>
+                        <div style="color: var(--accent-color); font-size: 50px; font-weight: 800; margin-left: 10px;">
+                            LIVE </div>
+                    </div>
+                    <div class="headline">{{ hero.headline }}</div>
+                    <div style="margin-top: 10px; font-size: 1.2rem; color: #555;">{{ hero.name }}</div>
+                    <br><br>
+                    <button
+                        onclick="playStream('{{ hero.url }}', '{{ hero.headline|escapejs }}', '{{ hero.name|escapejs }}', '{{ hero.original_title|escapejs }}')"
+                        style="padding: 10px 20px; font-size: 1.2rem; background-color: var(--accent-color); color: white; border: none; cursor: pointer;">
+                        Listen Live Now
+                    </button>
+                </div>
+            </div>
+            <div class="text">
+                <div>Original Stream Title: {{ hero.original_title }}</div>
+            </div>
+            {% endwith %}
+            {% else %}
+            <div class="headline" style="text-align: center; margin-top: 50px;">No Active News Channels Found</div>
+            {% endif %}
+        </section>
+        <hr class="line">
+
+        <!-- Section-2 / More Top Stories-->
+        <section class="section-2">
+            <div class="category">
+                <p> More Top Stories</p>
+            </div>
+            <div class="box">
+                {% for channel in channels|slice:"1:" %}
+                <div class="innerbox"
+                    onclick="playStream('{{ channel.url }}', '{{ channel.headline|escapejs }}', '{{ channel.name|escapejs }}', '{{ channel.original_title|escapejs }}')"
+                    style="cursor: pointer;">
+                    <div class="image">
+                        <img src="{{ channel.thumbnail }}" alt="img">
+                    </div>
+                    <div class="text">
+                        <p>{{ channel.headline }}</p>
+                        <p style="font-size: 0.8rem; color: gray;">{{ channel.name }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <hr class="line">
+
+        <!-- Section-3/ Media-->
+        <section class="section-3">
+            <div class="category">
+                <p> {{ current_category }} Global Feed</p>
+            </div>
+            <!-- Skeleton Loader / Dynamic Content Container -->
+            <div class="section-3_content" id="section-3-container">
+                <div style="padding: 20px; text-align: center; color: #666; width: 100%;">
+                    <p style="font-size: 18px; font-weight: bold;">Simulating Global News Retrieval...</p>
+                    <p>AI is writing fresh stories for {{ current_category }}...</p>
+                </div>
+            </div>
+        </section>
+        <hr class="line">
+
+        <!-- Section-4 /Sports-->
+        <section class="section-4">
+            <div class="category" style="background-color: transparent;">{{ current_category }} Highlights</div>
+            <div id="section-4-container" style="display: flex; gap: 20px; flex-direction: column;">
+                <p style="padding: 10px;">Loading Highlights...</p>
+            </div>
+        </section>
+
+        <!-- Section-5/ Environment -->
+        <section class="section-5">
+            <div class="category">{{ current_category }} Deep Dives</div>
+            <div id="section-5-container">
+                <p style="padding: 10px;">Loading Deep Dives...</p>
+            </div>
+        </section>
+        <hr class="line">
+
+        <!-- section-6/ The Last Read -->
+        <section class="section-6">
+            <div class="category">Just In: {{ current_category }}</div>
+            <div>
+                <div class="box">
+                    <!-- Horizontal Scroll Container -->
+                    <div class="scroll" id="section-6-container"
+                        style="animation: none; overflow-x: auto; padding-bottom: 20px;">
+                        <p style="padding: 10px;">Loading Latest...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div style="height: 200px;"> </div>
+
+    <!-- footer -->
+    <footer>
+        NewsTTS &copy; 2026. Powered by AI Translation.
+        <div class="footer-update">Last Update: 02/02/2026</div>
+    </footer>
+
+    <!-- SideBar -->
+    <div id="overlay" onclick="toggleSidebar()"></div>
+    <div id="mySidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+        <div class="sidebar-header">
+            NewsTTS <div style="width: 10px; height: 10px; background: #8b0000; border-radius: 50%; margin-left: 5px;">
+            </div>
+        </div>
+        <a href="" class="sidebar-link">Home</a>
+        <a href="register.html" class="sidebar-link">Subscribe / Register</a>
+        <a href="/?category=Business" class="sidebar-link">Business</a>
+        <a href="/?category=Sports" class="sidebar-link">Sports</a>
+        <a href="/?category=Tech" class="sidebar-link">Technology</a>
+        <a href="/?category=Space" class="sidebar-link">Space</a>
+        <div style="margin-top: auto; color: #555; font-size: 14px;">
+            &copy; 2026 NewsTTS Global.
+        </div>
+    </div>
+</body>
+
+<script>
+    //SideBar (Corrected Selector to only target the Hamburger Button)
+    function toggleSidebar() {
+        const sidebar = document.getElementById('mySidebar');
+        const overlay = document.getElementById('overlay');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
+
+    // Only attach listener to the specific hamburger button class
+    document.querySelector('.hamburger-btn').addEventListener('click', toggleSidebar);
+
+    // ASYNC NEWS LOADER
+    document.addEventListener('DOMContentLoaded', function () {
+        // Use escapejs to prevent JS syntax errors from backend data
+        const category = "{{ current_category|escapejs }}";
+        const lang = "{{ current_lang|escapejs }}";
+        console.log("Fetching news for:", category, "in", lang);
+
+        fetch(`/api/news/?category=${category}&lang=${lang}`)
+            .then(response => response.json())
+            .then(data => {
+                const stories = data.stories;
+                if (!stories || stories.length === 0) return;
+
+                // 1. Populate Section 3 (Media/Feed)
+                const s3Container = document.getElementById('section-3-container');
+                if (s3Container) {
+                    let s3Html = `
+                    <div class="section-3_headline-1" style="width: 40%; min-width: 300px;">
+                         <div class="image">
+                            <img src="https://picsum.photos/seed/${stories[0].headline.replace(/\s+/g, '-')}/600/400" style="width:100%; height:auto;">
+                        </div>
+                        <div class="text">
+                            <p style="font-size:25px; font-weight:800; margin-top:10px;">${stories[0].headline}</p>
+                            <p style="margin-top:10px;">${stories[0].summary}</p>
+                        </div>
+                    </div>
+                    <div class="section-3_headlines" style="flex: 1;">
+                `;
+                    // Stories 1-3
+                    for (let i = 1; i < 4 && i < stories.length; i++) {
+                        s3Html += `
+                        <div style="border-bottom: 1px solid #ccc; padding-bottom: 15px; margin-bottom: 15px;">
+                            <p style="font-weight:700; font-size:18px;">${stories[i].headline}</p>
+                            <p style="font-size:14px; color:#444;">${stories[i].summary}</p>
+                            <span style="font-size:12px; background:black; color:white; padding:2px 5px; border-radius:3px;">${stories[i].category}</span>
+                        </div>
+                    `;
+                    }
+                    s3Html += `</div>`;
+                    s3Container.innerHTML = s3Html;
+                }
+
+                // 2. Populate Section 4 (Highlights)
+                const s4Container = document.getElementById('section-4-container');
+                if (s4Container) {
+                    let s4Html = '';
+                    for (let i = 4; i < 6 && i < stories.length; i++) {
+                        s4Html += `
+                    <div class="Sports_news">
+                        <div>
+                            <div class="headline">${stories[i].headline}</div>
+                            <div class="text">${stories[i].summary}</div>
+                            <div style="margin-top:10px; font-weight:bold; color:#8b0000;">${stories[i].category}</div>
+                        </div>
+                        <div>
+                            <img src="https://picsum.photos/seed/${stories[i].headline.replace(/\s+/g, '-')}/300/200" alt="News Image">
+                        </div>
+                    </div>`;
+                    }
+                    s4Container.innerHTML = s4Html;
+                }
+
+                // 3. Populate Section 5 (Deep Dives)
+                const s5Container = document.getElementById('section-5-container');
+                if (s5Container) {
+                    let s5Html = '';
+                    for (let i = 6; i < 8 && i < stories.length; i++) {
+                        s5Html += `
+                      <div class="Environment_news" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                        <div class="headline" style="font-size: 22px; font-weight: bold;">${stories[i].headline}</div>
+                        <div class="text" style="font-size: 16px; margin-top: 5px;">${stories[i].summary}</div>
+                        <div style="font-size: 12px; color: green; font-weight: bold; margin-top: 5px; text-transform: uppercase;">${stories[i].category}</div>
+                    </div>`;
+                    }
+                    // Feature Image
+                    if (stories.length > 6) {
+                        s5Html += `
+                    <div class="section-5_content">
+                         <img src="https://picsum.photos/seed/${stories[6].headline.replace(/\s+/g, '-')}/800/300" style="width: 100%; height: auto; border-radius: 5px;" alt="Feature">
+                    </div>`;
+                    }
+                    s5Container.innerHTML = s5Html;
+                }
+
+                // 4. Populate Section 6 (Just In)
+                const s6Container = document.getElementById('section-6-container');
+                if (s6Container) {
+                    let s6Html = '';
+                    for (let i = 8; i < 12 && i < stories.length; i++) {
+                        s6Html += `
+                    <div class="innerbox" style="min-width: 250px;">
+                        <div class="image">
+                            <img src="https://picsum.photos/seed/${stories[i].headline.replace(/\s+/g, '-')}/250/150" alt="img">
+                        </div>
+                        <div class="text">
+                            <p style="font-weight: 600;">${stories[i].headline}</p>
+                            <p style="font-size: 12px;">${stories[i].summary.substring(0, 40)}...</p>
+                        </div>
+                    </div>`;
+                    }
+                    s6Container.innerHTML = s6Html;
+                }
+
+            })
+            .catch(err => {
+                console.error("API Error:", err);
+                const container = document.getElementById('section-3-container');
+                if (container) container.innerHTML = "<p>News Unavailable (Rate Limit or Network Error)</p>";
+            });
+    });
+
+</script>
+
+</html>

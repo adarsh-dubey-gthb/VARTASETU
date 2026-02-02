@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Varta Setu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* --- General Reset --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Abhaya Libre", serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Navbar & Logo Animation --- */
+        #nav-1 {
+            height: 60px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        #logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            gap: 0px;
+        }
+
+        /* The Typing Text Container */
+        #logo p {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            font-size: 30px;
+            font-weight: 950; 
+            animation: typing 1s steps(10, end) forwards ,  0.15s step-end infinite;
+        }
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 8ch;
+            }
+        }
+
+        /* The Red Dot */
+        #logo .line {
+            height: 15px;
+            width: 15px;
+            background-color: #8b0000;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* --- Registration Form Container --- */
+        .register-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px; 
+        }
+
+        .register-paper {
+            background-color: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            border: 1px solid black;
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .register-header {
+            text-align: center;
+            border-bottom: 2px solid black;
+            padding-bottom: 20px;
+            margin-bottom: 10px;
+        }
+
+        .register-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .register-header p {
+            font-size: 18px;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* --- Form Inputs --- */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        label {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 2px solid black;
+            font-size: 18px;
+            outline: none;
+            background: transparent;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-bottom-color: #8b0000;
+        }
+
+        /* Terms Checkbox Style */
+        .terms-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: black; 
+            cursor: pointer;
+        }
+
+        .terms-text {
+            font-size: 16px;
+        }
+
+        /* --- Buttons --- */
+        .submit-btn {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #8b0000;
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+        }
+
+        .form-footer {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .form-footer a {
+            color: black;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        .form-footer a:hover {
+            color: #8b0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav id="nav-1">
+        <a href="index.html" id="logo">
+            <div><p>Varta Setu</p></div>
+            <div class="line"></div>
+        </a>
+    </nav>
+
+    <div class="register-container">
+        <div class="register-paper">
+            <div class="register-header">
+                <h1>New Subscription</h1>
+                <p>Join the global conversation.</p>
+            </div>
+
+            <form action="#">
+                <div class="input-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" placeholder="Ex. John Doe" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="editor@newstts.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" placeholder="At least 8 characters" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Repeat password" required>
+                </div>
+
+                <div class="terms-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms" class="terms-text" style="font-weight: 400;">I agree to the <a href="#" style="color:black; font-weight: 700;">Terms of Service</a></label>
+                </div>
+
+                <button type="submit" class="submit-btn">Complete Registration</button>
+            </form>
+
+            <div class="form-footer">
+                <p>Already a subscriber? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const password = document.getElementById('password').value;
+        const confirm = document.getElementById('confirm-password').value;
+
+        if (password !== confirm) {
+            alert("Passwords do not match!");
+            return; 
+        }
+        alert("Registration Successful! Welcome to NewsTTS.");
+        window.location.href = 'index.html';
+    });
+</script>
+</body>
+</html>
